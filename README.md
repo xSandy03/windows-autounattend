@@ -1,4 +1,4 @@
-# Windows 11 autounattend.xml (local account, privacy off)
+# Windows 11 autounattend.xml (local account, privacy off) + Restart to BIOS
 
 A minimal answer file for a **stock** Windows 11 install USB (Media Creation Tool or Microsoft's ISO). It changes
 nothing inside the Windows image; Windows Setup simply reads it from the USB stick.
@@ -35,3 +35,10 @@ Other languages: change the four `en-US` values and `InputLocale` (`0409:0000040
 Uses only answer-file settings documented by Microsoft (`Microsoft-Windows-Shell-Setup`,
 `Microsoft-Windows-International-Core`, `Microsoft-Windows-Setup`). Not yet tested on a real 25H2 install: if another
 setup page appears, open an issue.
+
+## Restart to BIOS
+
+[`Restart to BIOS.cmd`](Restart%20to%20BIOS.cmd) restarts the PC straight into the UEFI firmware settings, no key
+mashing at boot. Put it on your desktop and double-click it: it asks for admin rights, then **Y/N**, then runs
+`shutdown /r /fw /t 0`. Save your work first: open programs are closed straight away. It needs a PC booted in UEFI
+mode; on legacy/CSM boot it tells you to press DEL (or your board's key) during startup instead.
