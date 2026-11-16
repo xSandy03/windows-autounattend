@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Unattended answer file for a stock Windows 11 USB (Media Creation Tool or Microsoft ISO).
+	Copy to the ROOT of the USB stick as "autounattend.xml". It changes nothing inside the Windows image.
+	BEFORE COPYING: replace CHANGE-ME-USER and CHANGE-ME-PASSWORD below (the password is stored as plain text
+	on the USB stick; delete the file from the stick after installing).
+
+	Automatic: language/region/keyboard English (US), licence accepted, Microsoft-account and network screens skipped, privacy
+	questions answered "off" (ProtectYourPC 3: optional diagnostics, tailored experiences, ads ID, location, etc. off;
+	Pro cannot go below "Required" diagnostic data), one local admin.
+	Stops for: the product-key page ("I don't have a product key"), the EDITION list (pick the edition your PC is
+	licensed for), and the disk page (pick the disk yourself;
+	this file never selects or wipes a disk).
+	Not included: product key, edition, disk selection, TPM/Secure Boot bypass, any Windows component changes.
+	Time zone: not set here (Setup's default for en-US is Pacific); check it in Settings > Time & language after
+	install.
+-->
+<unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
+	<settings pass="windowsPE">
+		<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<SetupUILanguage>
+				<UILanguage>en-US</UILanguage>
+			</SetupUILanguage>
+			<InputLocale>0409:00000409</InputLocale>
+			<SystemLocale>en-US</SystemLocale>
+			<UILanguage>en-US</UILanguage>
+			<UserLocale>en-US</UserLocale>
+		</component>
+		<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<UserData>
+				<AcceptEula>true</AcceptEula>
+			</UserData>
+		</component>
+	</settings>
+	<settings pass="oobeSystem">
+		<component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<InputLocale>0409:00000409</InputLocale>
+			<SystemLocale>en-US</SystemLocale>
+			<UILanguage>en-US</UILanguage>
+			<UserLocale>en-US</UserLocale>
+		</component>
+		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<OOBE>
+				<HideEULAPage>true</HideEULAPage>
+				<HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+				<HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+				<HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+				<ProtectYourPC>3</ProtectYourPC>
+			</OOBE>
+			<UserAccounts>
+				<LocalAccounts>
+					<LocalAccount wcm:action="add">
+						<Name>CHANGE-ME-USER</Name>
+						<Group>Administrators</Group>
+						<Password>
+							<Value>CHANGE-ME-PASSWORD</Value>
+							<PlainText>true</PlainText>
+						</Password>
+					</LocalAccount>
+				</LocalAccounts>
+			</UserAccounts>
+		</component>
+	</settings>
+</unattend>
